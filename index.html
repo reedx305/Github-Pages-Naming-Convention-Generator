@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naming Convention Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="data-warning" style="display:none; color:#b21f1f; font-weight:bold; margin-bottom:1rem;"></div>
+        <header>
+            <h1>Naming Convention Generator</h1>
+            <p class="subtitle">Select a naming convention template and fill in the fields to generate your naming convention</p>
+        </header>
+        
+        <div class="content">
+            <div class="selector-container">
+                <h2 class="selector-title">Select Naming Convention</h2>
+                <select id="naming-selector">
+                    <option value="">-- Choose a naming convention --</option>
+                </select>
+            </div>
+            
+            <div id="form-container" class="form-container">
+                <h2 id="form-title" class="form-title">Naming Convention Details</h2>
+                <p id="form-description" class="form-description"></p>
+                
+                <div id="fields-container"></div>
+                
+                <div class="template-display">
+                    Template: <span id="template-display"></span>
+                </div>
+                
+                <div class="result-container">
+                    <span id="result-display">Your naming convention will appear here</span>
+                </div>
+                
+                <div class="examples">
+                    <h3>Examples:</h3>
+                    <ul id="examples-list"></ul>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Hey there! This was last updated in 2026</p>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
