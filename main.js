@@ -1,5 +1,5 @@
 // Configurable file name for templates. Needs to match your JSON file.
-const TEMPLATES_FILE = 'templates.json';
+const TEMPLATES_FILE = 'data/templates.json';
 // Global variable to store naming data
 let namingData = [];
 
