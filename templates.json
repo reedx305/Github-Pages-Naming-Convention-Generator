@@ -3,7 +3,7 @@
     "id": "server-naming",
     "name": "Server Naming Template",
     "description": "Standardized server names for IT infrastructure. Includes location, role, OS, and unique ID.",
-    "template": "{{Location}}-{{Role}}-{{OS}}-{{ID}}{{Production}}",
+    "template": "{{Location}}-{{Role}}-{{OS}}-{{ID}} [{{Production}}]",
     "fields": [
       {
         "key": "Location",
@@ -11,8 +11,8 @@
         "label": "Location",
         "required": true,
         "options": [
-          {"value": "HQ", "label": "HQ"},
-          {"value": "Remote", "label": "Remote"},
+          {"value": "DC1", "label": "Data Center 1"},
+          {"value": "DC2", "label": "Data Center 2"},
           {"value": "Cloud", "label": "Cloud"}
         ]
       },
@@ -23,7 +23,7 @@
         "required": true,
         "options": [
           {"value": "Web", "label": "Web"},
-          {"value": "DB", "label": "DB"},
+          {"value": "DB", "label": "Database"},
           {"value": "File", "label": "File"},
           {"value": "App", "label": "App"}
         ]
@@ -48,7 +48,7 @@
       {
         "key": "Production",
         "type": "checkbox",
-        "label": "Production Server?"
+        "label": "In Production?"
       }
     ]
   },
@@ -56,7 +56,7 @@
     "id": "user-account",
     "name": "User Account Template",
     "description": "Naming convention for user accounts. Includes department, user type, initials, and year.",
-    "template": "{{Department}}-{{UserType}}-{{Initials}}-{{Year}}{{MFA}}",
+    "template": "{{Department}}-{{UserType}}-{{Initials}}-{{Year}} {{MFA}}",
     "fields": [
       {
         "key": "Department",
@@ -104,7 +104,7 @@
     "id": "network-device",
     "name": "Network Device Template",
     "description": "Naming convention for network devices. Includes device type, location, VLAN, and asset tag.",
-    "template": "{{DeviceType}}-{{Location}}-{{VLAN}}-{{AssetTag}}{{Managed}}",
+    "template": "[{{DeviceType}}] {{Location}}-{{VLAN}}-{{AssetTag}} [{{Managed}}]",
     "fields": [
       {
         "key": "DeviceType",
