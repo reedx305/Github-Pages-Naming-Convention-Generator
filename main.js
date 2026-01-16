@@ -1,5 +1,5 @@
 // Configurable file name for templates. Needs to match your JSON file.
-const TEMPLATES_FILE = 'data/templates.json';
+const TEMPLATES_FILE = 'templates.json';
 // Global variable to store naming data
 let namingData = [];
 
@@ -221,7 +221,17 @@ function displayForm(data) {
             checkbox.className = 'checkbox-input';
             checkbox.id = field.key;
             checkbox.name = field.key;
-
+            // Create label for required
+            const checkboxLabel = document.createElement('label');
+            checkboxLabel.setAttribute('for', field.key);
+            if (field.required) {
+                checkboxLabel.innerHTML = field.label + ' <span style="color: red;">*</span>';
+            } else {
+                checkboxLabel.textContent = field.label;
+            }
+            checkboxContainer.appendChild(checkbox);
+            checkboxContainer.appendChild(checkboxLabel);
+            fieldGroup.appendChild(checkboxContainer);
         }
         fieldsContainer.appendChild(fieldGroup);
     });
