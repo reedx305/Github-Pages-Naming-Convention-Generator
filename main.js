@@ -33,6 +33,7 @@ async function loadNamingData() {
                 "id": "fallback-example",
                 "name": "Fallback Example",
                 "description": "This loads if JSON fails to load or is ran locally.",
+                "link": "https://reedx305.github.io/NameStruct-Helper/",
                 "template": "{{PUBLIC}}-{{Department}}-{{DeviceType}}-{{SerialNumber}}",
                 "fields": [
                     {
@@ -73,6 +74,7 @@ async function loadNamingData() {
                 "id": "different-example-2",
                 "name": "Different Example 2",
                 "description": "Example option. Shows some additional formatting options.",
+                "link": "",
                 "template": "[{{Environment}}] {{Project}}-{{ResourceType}} [{{TEST}}]",
                 "fields": [
                     {
@@ -167,7 +169,12 @@ function updateLiveOutput(data) {
 
 // Display form based on selected naming convention
 function displayForm(data) {
-    formTitle.textContent = data.name;
+    // If a non-empty link field exists, make the header a clickable link
+    if (data.link && typeof data.link === 'string' && data.link.trim() !== "") {
+        formTitle.innerHTML = `<a href="${data.link}" target="_blank" rel="noopener noreferrer">${data.name}</a>`;
+    } else {
+        formTitle.textContent = data.name;
+    }
     formDescription.textContent = data.description;
     templateDisplay.textContent = data.template;
     // Clear previous fields
@@ -193,7 +200,7 @@ function displayForm(data) {
             if (field.required) dropdown.required = true;
             const defaultOption = document.createElement('option');
             defaultOption.value = '';
-            defaultOption.textContent = '-- Select ' + field.label + ' --';
+            defaultOption.textContent = '-- Select ' + field.key + ' --';
             dropdown.appendChild(defaultOption);
             field.options.forEach(option => {
                 const opt = document.createElement('option');
@@ -209,7 +216,7 @@ function displayForm(data) {
             input.className = 'text-input';
             input.id = field.key;
             input.name = field.key;
-            input.placeholder = 'Enter ' + field.label;
+            input.placeholder = 'Enter ' + field.key;
             if (field.required) input.required = true;
             fieldGroup.appendChild(label);
             fieldGroup.appendChild(input);
@@ -303,7 +310,7 @@ function generateExamples(data) {
                 const randomOption = field.options[Math.floor(Math.random() * field.options.length)];
                 exampleText = exampleText.replace(new RegExp(`{{${field.key}}}`, 'g'), randomOption.value);
             } else if (field.type === 'text') {
-                exampleText = exampleText.replace(new RegExp(`{{${field.key}}}`, 'g'), `<i>${field.label}</i>`);
+                exampleText = exampleText.replace(new RegExp(`{{${field.key}}}`, 'g'), `<i>${field.key}</i>`);
             } else if (field.type === 'checkbox') {
                 exampleText = exampleText.replace(new RegExp(`{{${field.key}}}`, 'g'), field.key);
             }
