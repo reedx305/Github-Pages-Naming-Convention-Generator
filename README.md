@@ -1,6 +1,6 @@
 # Github-Pages-Naming-Convention-Generator
 
-A naming convention generator for Github Pages.
+A naming convention generator for Github Pages. Copied from original repo: https://github.com/reedx305/Github-Pages-Naming-Convention-Generator
 
 ## Getting Started
 
